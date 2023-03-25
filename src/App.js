@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route , Routes } from "react-router-dom";
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+import Navbar from './components/Navbar';
+import Dashboard from "./components/Dashboard";
+import Room from "./components/Room";
+import Devices from './components/Devices';
+import Statistic from './components/Statistics';
+import Security from './components/Security';
+import Logout from './components/Logout';
+class App extends Component {
+  render() {
+    return (
+      <div className='liem'>
+        <div className='the-left'>
+          <Navbar />
+        </div>
+        <div className='col the-right'>
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="room" element={<Room />} />
+            <Route path="devices" element={<Devices />} />
+            <Route path="security" element={<Security />} />
+            <Route path="statistic" element={<Statistic />} />
+            <Route path="logout" element={<Logout />} />
+          </Routes> 
+        </div>
+      </div>
+    );
+  };
+};
 export default App;
